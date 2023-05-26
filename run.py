@@ -4,9 +4,12 @@
 def red_door():
     """
     red room experience
-
+    user choose options
+    removes treasures from the treasure box
+    drop the old weapon back into the box
     """
     treasure_box = ["diamond", "gold", "silver", "sword"]
+
     print("You have come into the red room.")
     print("There lies a treasure box to the left of the room.")
     print("Right beside the box is a guard directly opposite the door.\nA very giant one at that...")
@@ -25,6 +28,7 @@ def red_door():
             print("You find some....")
 
             for treasure in treasure_box:
+                # List out the treasures
                 print(treasure.capitalize())
         
             print("What will you like to do with your found items?")
@@ -40,7 +44,8 @@ def red_door():
                 treasure_box.remove("sword")
                 print("You just got a new sword from the box. This sword is very sharp and pointy.")
                 print("I think you can face more dragons.")
-
+                
+                # Join the remaining content of the treasure_box
                 treasure_list = ",".join(treasure_box)
                 print(f"You also found {treasure_list} in the box.") 
 
