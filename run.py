@@ -110,7 +110,7 @@ def you_died(reason):
     """
     prints reason why the game is ending 
     """
-    print(f"{reason}, you can no longer continue! Good job")
+    print(f"{reason}, you can no longer continue!")
     exit()
 
 def green_door():
@@ -151,7 +151,7 @@ def get_player_name():
      Prompts user to enter name
     """
     name = input("Enter your name: \n")
-    print(f"Your name is {name}")
+    print(f"Your name is {name.upper()}")
     return name
 
 def main():
@@ -162,5 +162,8 @@ def main():
     player_name = get_player_name()
     
     start_adventure()
+
+    print("THE END")
+    print(f"THANK YOU FOR PLAYING {player_name.upper()}...")
 
 main()
