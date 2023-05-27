@@ -1,6 +1,38 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+def guard():
+    """
+     player choose to either attack, sneak or check
+     attack: player dies while fighting, game over
+     sneak: player sneaks past the guard, wins the game
+     check: player
+    """
+    print("You are now approaching the guard")
+    print("What do you think its best to do?")
+    # Player's response to seeing the guard
+    guard_response = {
+        "attack": "You run to the guard thinking you are fast enough, but he caught you.",
+        "sneak": "You approach the guard, still sleeping. Reaching for the door, you gently opened it and slip out.",
+        "check": "You see that he guard is still sleeping, you need to get to the door, don't waste your time."
+    }
+    while True:
+        next_action = input("Attack | Sneak | Check \n").lower()
+        if next_action in guard_response.keys():
+            if next_action == "sneak":
+                print("You have just slipped through the door.")
+                print("You are now outside, free atlast!")
+                return
+            elif next_action == "attack":
+                you_died("Guard woke up, reached for his weapons.\nGAME OVER")
+            elif next_action == "check":
+                print("You need to think fast before we are caught.")
+                you_died("Guard woke up.\n GAME OVER")
+            else:
+                print("Not sure what you meant there.Try again")
+
+
+
 def red_door():
     """
     red room experience
@@ -71,17 +103,8 @@ def red_door():
         print("OK, Let's take the guard's path")
     else:
         print("There is no option here. I think we can quietly go through the guard.")
-    
+    guard()
                     
-
-                
-
-
-
-
-
-        elif choice == "2":
-            print("No need for treasure, I need to find my way out.")
 
 def you_died(reason):
     """
