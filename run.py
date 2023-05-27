@@ -1,12 +1,38 @@
 # Your code goes here.
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
+import os
+
+os.system("clear")
+""" ANSI color codes """
+COLORS = {\
+    "black": "\033[0;30m",
+    "red": "\033[0;31m",
+    "green": "\033[0;32m",
+    "brown": "\033[0;33m",
+    "blue": "\033[0;34m",
+    "purple": "\033[0;35m",
+    "cyan": "\033[0;36m",
+    "cyan-background": "\u001b[46m",
+    "black_background": "\u001b[40m",
+}
+def colorRep(text):
+    for color in COLORS:
+        text = text.replace("[[" + color + "]]",COLORS[color])
+    return text
+
+def print_art():
+    f = open("title_art.txt","r")
+    ascii = "".join(f.readlines())
+    title_tag = colorRep(ascii)
+    print(title_tag)
+
 def guard():
     """
-     player choose to either attack, sneak or check
-     attack: player dies while fighting, game over
-     sneak: player sneaks past the guard, wins the game
-     check: player
+    player choose to either attack, sneak or check
+    attack: player dies while fighting, game over
+    sneak: player sneaks past the guard, wins the game
+    check: player
     """
     print("You are now approaching the guard")
     print("What do you think its best to do?")
@@ -158,7 +184,8 @@ def main():
     """
      Starts the game
     """
-    
+    print_art()
+
     player_name = get_player_name()
     
     start_adventure()
@@ -167,3 +194,4 @@ def main():
     print(f"THANK YOU FOR PLAYING {player_name.upper()}...")
 
 main()
+
